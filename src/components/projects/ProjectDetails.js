@@ -1,10 +1,11 @@
 import React from 'react';
 
-const ProjectDetails = () => {
+const ProjectDetails = (props) => {
+    const id = props.match.params.id
     return(
         <div className="card">
             <div className="card-content">
-                <span className="card-title">project title</span>
+                <span className="card-title">project title : {id} </span>
                 <p>I am a very simple card. I am good at containing small bits of information.
                     I am convenient because I require little markup to use effectively.
                 </p>
