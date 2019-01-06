@@ -26,7 +26,7 @@ class SignIn extends Component {
                             value={this.state.email} 
                             onChange={this.handleChange}
                         />
-                        <label for="email">Email</label>
+                        <label htmlFor="email">Email</label>
                         </div>
                     </div>
                     <div className="row">
@@ -38,7 +38,7 @@ class SignIn extends Component {
                             value={this.state.password} 
                             onChange={this.handleChange}
                         />
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         </div>
                     </div>
                     <div className="row">
