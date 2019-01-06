@@ -11,7 +11,7 @@ class Main extends Component {
                 <div>
                     <Navbar />
                     <Switch>
-                        <Route path="/" component={Dashboard} />
+                        <Route exact path="/" component={Dashboard} />
                         <Route path="/project/:id" component={ProjectDetails} />                        
                     </Switch>
                 </div>
