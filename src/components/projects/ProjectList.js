@@ -1,13 +1,12 @@
 import React from 'react';
+import ProjectSummary from './ProjectSummary';
 
 const ProjectList = () => {
     return(
-        <div className="card">
-            <div className="card-content">
-                <span className="card-title">project title</span>
-                <p>posted by Salma Allam</p>
-                <p>1st Octoder, 10am</p>
-            </div>
+        <div className="">
+            <ProjectSummary />
+            <ProjectSummary />
+            <ProjectSummary />
         </div>
     )
 }
