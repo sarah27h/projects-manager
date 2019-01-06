@@ -26,7 +26,7 @@ class SignUp extends Component {
         return(
             <div className="container">
                 <h5>Sign Up</h5>
-                <form className="col s12 m6">
+                <form onSubmit={this.handleSubmit} className="col s12 m6">
                 {/* start First Name  */}
                 <div className="row">
                         <div className="input-field col s12">
