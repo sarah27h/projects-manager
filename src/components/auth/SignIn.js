@@ -12,11 +12,17 @@ class SignIn extends Component {
         this.setState({ [e.target.id] : e.target.value });
     }
 
+    // handle user submit form
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    }
+
     render() {
         return(
             <div className="container">
                 <h5>Sign In</h5>
-                <form className="col s12 m6">
+                <form onSubmit={this.handleSubmit} className="col s12 m6">
                     <div className="row">
                         <div className="input-field col s12">
                         <input 
