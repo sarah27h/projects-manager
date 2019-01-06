@@ -10,7 +10,7 @@ const ProjectDetails = (props) => {
                     I am convenient because I require little markup to use effectively.
                 </p>
             </div>
-            <div class="card-action">
+            <div className="card-action">
                 <p>posted by Salma Allam</p>
                 <p>1st October, 10am</p>
             </div>
