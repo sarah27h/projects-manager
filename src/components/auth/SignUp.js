@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
 class SignUp extends Component {
+
+    state = {
+        email: '',
+        password: '',
+        firstName: '',
+        lastName: ''
+    }
     
     render() {
         return(
@@ -13,7 +20,8 @@ class SignUp extends Component {
                         <input 
                             id="firstName" 
                             type="text" 
-                            className="validate"   
+                            className="validate" 
+                            value={this.state.firstName}  
                         />
                         <label htmlFor="firstName">First Name</label>
                         </div>
@@ -25,6 +33,7 @@ class SignUp extends Component {
                             id="lastName" 
                             type="text" 
                             className="validate" 
+                            value={this.state.lastName} 
                         />
                         <label htmlFor="lastName">Last Name</label>
                         </div>
@@ -36,6 +45,7 @@ class SignUp extends Component {
                             id="email" 
                             type="email" 
                             className="validate" 
+                            value={this.state.email} 
                         />
                         <label htmlFor="email">Email</label>
                         </div>
@@ -47,6 +57,7 @@ class SignUp extends Component {
                             id="password" 
                             type="password" 
                             className="validate" 
+                            value={this.state.password} 
                         />
                         <label htmlFor="password">Password</label>
                         </div>
