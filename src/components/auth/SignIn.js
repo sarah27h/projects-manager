@@ -6,6 +6,12 @@ class SignIn extends Component {
         password: ''
     }
 
+    handleChange = (e) => {
+        //use ES6 computed property to update key state
+        // { [name]: value }
+        this.setState({ [e.target.id] : e.target.value });
+    }
+
     render() {
         return(
             <div className="container">
@@ -17,7 +23,8 @@ class SignIn extends Component {
                             id="email" 
                             type="email" 
                             className="validate" 
-                            value={this.state.email}
+                            value={this.state.email} 
+                            onChange={this.handleChange}
                         />
                         <label for="email">Email</label>
                         </div>
@@ -28,7 +35,8 @@ class SignIn extends Component {
                             id="password" 
                             type="password" 
                             className="validate" 
-                            value={this.state.password}
+                            value={this.state.password} 
+                            onChange={this.handleChange}
                         />
                         <label for="password">Password</label>
                         </div>
