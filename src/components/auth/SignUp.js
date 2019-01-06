@@ -8,6 +8,19 @@ class SignUp extends Component {
         firstName: '',
         lastName: ''
     }
+
+    // handle input change
+    handleChange = (e) => {
+        //use ES6 computed property to update key state
+        // { [name]: value }
+        this.setState({ [e.target.id] : e.target.value });
+    }
+
+    // handle user submit form
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    }
     
     render() {
         return(
@@ -21,7 +34,8 @@ class SignUp extends Component {
                             id="firstName" 
                             type="text" 
                             className="validate" 
-                            value={this.state.firstName}  
+                            value={this.state.firstName} 
+                            onChange={this.handleChange}
                         />
                         <label htmlFor="firstName">First Name</label>
                         </div>
@@ -34,6 +48,7 @@ class SignUp extends Component {
                             type="text" 
                             className="validate" 
                             value={this.state.lastName} 
+                            onChange={this.handleChange}
                         />
                         <label htmlFor="lastName">Last Name</label>
                         </div>
@@ -46,6 +61,7 @@ class SignUp extends Component {
                             type="email" 
                             className="validate" 
                             value={this.state.email} 
+                            onChange={this.handleChange}
                         />
                         <label htmlFor="email">Email</label>
                         </div>
@@ -58,6 +74,7 @@ class SignUp extends Component {
                             type="password" 
                             className="validate" 
                             value={this.state.password} 
+                            onChange={this.handleChange}
                         />
                         <label htmlFor="password">Password</label>
                         </div>
