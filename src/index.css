@@ -23,7 +23,7 @@ code {
 }
 
 
-/* form */
+/*** form ***/
 form {
   background: #fff;
   padding: 20px;
@@ -34,3 +34,38 @@ form button,
 form h5 {
   margin: 20px 0;
 }
+
+/* form label */
+.input-field label {
+  color: #03a9f4 ;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label,
+.input-field input[type=email]:focus  + label,
+.input-field input[type=password]:focus  + label,
+.materialize-textarea:focus:not([readonly]) + label {
+  color: #03a9f4 !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus,
+.input-field input[type=email]:focus,
+.input-field input[type=password]:focus,
+.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #03a9f4 !important;
+  box-shadow: 0 1px 0 0 #03a9f4 !important;
+}
+
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #03a9f4;
+  box-shadow: 0 1px 0 0 #03a9f4;
+}
+
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #b71c1c;
+  box-shadow: 0 1px 0 0 #b71c1c;
+}
+
