@@ -21,8 +21,8 @@ class SignIn extends Component {
     render() {
         return(
             <div className="container">
-                <h5>Sign In</h5>
                 <form onSubmit={this.handleSubmit} className="col s12 m6">
+                    <h5>Sign In</h5>
                     <div className="row">
                         <div className="input-field col s12">
                         <input 

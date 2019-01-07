@@ -25,10 +25,9 @@ class SignUp extends Component {
     render() {
         return(
             <div className="container">
-                <h5>Sign Up</h5>
                 <form onSubmit={this.handleSubmit} className="col s12 m6">
-                {/* start First Name  */}
-                <div className="row">
+                    <h5>Sign Up</h5>
+                    <div className="row">
                         <div className="input-field col s12">
                         <input 
                             id="firstName" 
