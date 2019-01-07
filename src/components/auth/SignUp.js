@@ -80,7 +80,7 @@ class SignUp extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <button className="btn waves-effect waves-light" type="submit" name="action">
+                        <button className="btn light-blue z-depth-0" type="submit" name="action">
                             Sign Up
                         </button>
                     </div>
