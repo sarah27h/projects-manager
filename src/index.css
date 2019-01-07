@@ -30,6 +30,7 @@ form {
   margin-top: 40px;
 }
 
-form button {
-  margin: 20px;
+form button,
+form h5 {
+  margin: 20px 0;
 }
