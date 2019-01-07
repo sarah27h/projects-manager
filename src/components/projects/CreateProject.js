@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class CreateProject extends Component {
     
+    state = {
+        title: '',
+        content: ''
+    }
+
     render() {
         return(
             <div className="container">
@@ -13,6 +18,7 @@ class CreateProject extends Component {
                             id="title" 
                             type="text" 
                             className="validate" 
+                            value={this.state.title} 
                         />
                         <label htmlFor="title">Project Title</label>
                         </div>
@@ -21,7 +27,8 @@ class CreateProject extends Component {
                         <div className="input-field col s12">
                         <textarea 
                             id="content" 
-                            className="materialize-textarea">
+                            className="materialize-textarea"
+                            value={this.state.content} >
                         </textarea>
                         <label htmlFor="content">Project Content</label>
                         </div>
