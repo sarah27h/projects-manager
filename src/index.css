@@ -21,3 +21,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+/* form */
+form {
+  background: #fff;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+form button {
+  margin: 20px;
+}
