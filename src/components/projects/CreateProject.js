@@ -14,6 +14,12 @@ class CreateProject extends Component {
         this.setState({ [e.target.id] : e.target.value });
     }
 
+    // handle user submit form
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    }
+
     render() {
         return(
             <div className="container">
