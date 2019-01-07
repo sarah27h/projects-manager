@@ -7,6 +7,13 @@ class CreateProject extends Component {
         content: ''
     }
 
+    // handle input change
+    handleChange = (e) => {
+        //use ES6 computed property to update key state
+        // { [name]: value }
+        this.setState({ [e.target.id] : e.target.value });
+    }
+
     render() {
         return(
             <div className="container">
@@ -19,6 +26,7 @@ class CreateProject extends Component {
                             type="text" 
                             className="validate" 
                             value={this.state.title} 
+                            onChange={this.handleChange}
                         />
                         <label htmlFor="title">Project Title</label>
                         </div>
@@ -28,7 +36,8 @@ class CreateProject extends Component {
                         <textarea 
                             id="content" 
                             className="materialize-textarea"
-                            value={this.state.content} >
+                            value={this.state.content}
+                            onChange={this.handleChange} >
                         </textarea>
                         <label htmlFor="content">Project Content</label>
                         </div>
