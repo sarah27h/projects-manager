@@ -1,3 +1,7 @@
+html {
+  min-height: 100%; /* to get a height 100% of browser*/
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +10,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(/img/projectbg.svg) no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-color: #fff;
+  min-height: 100%; /* to get a height 100% of browser*/
 }
 
 code {
