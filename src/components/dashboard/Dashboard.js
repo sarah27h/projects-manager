@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import Notifications from './Notifications';
 import ProjectList from '../projects/ProjectList';
+/* 
+    using a HOC connect to connect our Dashboard component with store
+    so our component can access data 
+*/ 
+import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     render() {
@@ -19,4 +24,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default connect()(Dashboard);
