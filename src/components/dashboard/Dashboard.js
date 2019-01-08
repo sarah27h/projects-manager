@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     render() {
+        console.log(this.props);
         return(
             <div className="container">
                 <div className="row">
@@ -21,6 +22,18 @@ class Dashboard extends Component {
                 </div>
             </div>
         )
+    }
+}
+
+/* 
+    map state from store to props for this component
+    this method return an object which props are attached
+    to props of that component
+    so we can access them inside this component
+*/
+const mapStateToProps = (state) => {
+    return {
+        projects: state.project.projects
     }
 }
 
