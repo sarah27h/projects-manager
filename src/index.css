@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(/img/projectbg.svg) no-repeat;
+  background: url(/img/projectbg.svg) no-repeat; /*img from freepike <a href="http://www.freepik.com">Designed by Freepik</a>*/
   background-size: 100%;
   background-position: center;
   background-color: #fff;
