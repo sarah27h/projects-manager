@@ -7,11 +7,10 @@ import ProjectList from '../projects/ProjectList';
 */ 
 import { connect } from 'react-redux';
 
-/* use destructuring to grab projects off props*/
-const { projects } = this.props;
-
 class Dashboard extends Component {
     render() {
+        /* use destructuring to grab projects off props*/
+        const { projects } = this.props;
         console.log(this.props);
         return(
             <div className="container">
