@@ -37,4 +37,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect()(Dashboard);
+/*
+    pass mapStateToProps to connect
+    so it know which data to get from store
+*/
+export default connect(mapStateToProps)(Dashboard);
