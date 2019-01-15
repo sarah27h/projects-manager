@@ -19,6 +19,8 @@ class CreateProject extends Component {
     // handle user submit form
     handleSubmit = (e) => {
         e.preventDefault();
+        // pass user inputs to CreateProject
+        this.props.CreateProject(this.state);
         console.log(this.state);
     }
 
