@@ -10,7 +10,7 @@ import rootReducer from './store/reducers/rootReducer';
 import { Provider } from 'react-redux';
 
 /*import thunk middleware*/
-import {thunk} from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 // create a store and pass rootReducer into it
 // createStore second arguments is the "store enhancer"
