@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createProject } from '../../store/actions/projectActions';
 
 class CreateProject extends Component {
     
@@ -59,4 +61,20 @@ class CreateProject extends Component {
     }
 }
 
-export default CreateProject;
+/* 
+    dispatch createProject action inside this component
+    this method return an object which props are attached
+    to props of this component
+    add createProject to props of this component
+    so we can access them inside this component
+*/
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // send action to reducer >> dispatch(createProject(project)
+        createProject: (project) => dispatch(createProject(project))
+    }
+}
+
+// pass mapDispatchToProps to connect
+// so it know which data to get from store
+export default connect(null, mapDispatchToProps)(CreateProject);
