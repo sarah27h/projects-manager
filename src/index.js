@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+// to apply thunk we need applyMiddleware
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store/reducers/rootReducer';
 /* use Provide component to bind redux with our react app*/
 import { Provider } from 'react-redux';
 
-/* create a store and pass rootReducer into it */
-const store = createStore(rootReducer);
+/*import thunk middleware*/
+import {thunk} from 'redux-thunk';
+
+// create a store and pass rootReducer into it
+// createStore second arguments is the "store enhancer"
+// use applyMiddleware to apply the thunk middleware to our store.
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(<Provider store={store}> <App /></Provider>, document.getElementById('root'));
 
