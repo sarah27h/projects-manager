@@ -8,9 +8,11 @@
     "react-dom": "^16.7.0",
     "react-materialize": "^2.6.0",
     "react-redux": "^6.0.0",
+    "react-redux-firebase": "^2.2.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.2",
     "redux": "^4.0.1",
+    "redux-firestore": "^0.6.3",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
