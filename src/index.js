@@ -12,10 +12,16 @@ import { Provider } from 'react-redux';
 /*import thunk middleware*/
 import thunk from 'redux-thunk';
 
+/* import extra arguments for thunk to use inside action creator  */
+import { getFirestore } from 'redux-firestore';
+import { getFirebase } from 'react-redux-firebase';
+
 // create a store and pass rootReducer into it
 // createStore second arguments is the "store enhancer"
 // use applyMiddleware to apply the thunk middleware to our store.
-const store = createStore(rootReducer, applyMiddleware(thunk));
+// use withExtraArgumet to pass extra arguments for thunk function
+// to provide binding to firebase service, firestore db 
+const store = createStore(rootReducer, applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })));
 
 ReactDOM.render(<Provider store={store}> <App /></Provider>, document.getElementById('root'));
 
