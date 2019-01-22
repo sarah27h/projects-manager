@@ -6,11 +6,30 @@ export const createProject = (project) => {
     // { getFirestore, getFirebase } : to provide binding to firebase service, firestore db 
     return (dispatch, getState, { getFirestore, getFirebase }) => {
         // perform async task
-        // here.....
-        // continue dispatch action to projectReducer
-        dispatch({
-            type: 'CREATE_PROJECT',
-            project
+        // get a reference to our firestore db
+        // then using collection to select our projects (collection) in firestore
+        // then using add function to add new project (new document) to it
+        const firestore = getFirestore();
+        firestore.collection('projects').add({
+            ...project,
+            authorFirstName: 'Sarah',
+            authorLastName: 'Hassan',
+            authorId: 12345,
+            createAt: new Date()
+            
         })
+        // this asyn task it will return a promise
+        // this function will fire when adding data to db complete
+        .then( ()=> {
+            // continue dispatch (action, payload) to projectReducer
+            dispatch({ type: 'CREATE_PROJECT', project })
+        })
+        // handle case if adding data to db not completed
+        .catch( (error)=> {
+            // continue dispatch (action, payload) to projectReducer
+            dispatch({ type: 'CREATE_PROJECT_failed', error })
+        })
+        console.log(typeof(firestore), firestore);
+        
     }
 }
