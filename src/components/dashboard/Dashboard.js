@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import Notifications from './Notifications';
 import ProjectList from '../projects/ProjectList';
-/* 
-    using a HOC connect to connect our Dashboard component with store
-    so our component can access data 
-*/ 
+
+// using a HOC connect to connect our Dashboard component with store
+// so our component can access data
 import { connect } from 'react-redux';
+
+// firebaseConnect will use as a HOC 
+// to connect <Dashboard/> with firestore collection
+import { firestoreConnect } from 'react-redux-firebase';
+
+// compose used to combine HOC (connect, firebaseConnect)
+import { compose } from 'redux';
 
 class Dashboard extends Component {
     render() {
@@ -34,8 +40,10 @@ class Dashboard extends Component {
     so we can access them inside this component
 */
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        projects: state.project.projects
+        // grab data from firestore property
+        projects: state.firestore.ordered.projects
     }
 }
 
@@ -43,4 +51,7 @@ const mapStateToProps = (state) => {
     pass mapStateToProps to connect
     so it know which data to get from store
 */
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([{ collection: 'projects'}]) // take array of objects to connect db collection to our component
+)(Dashboard)
