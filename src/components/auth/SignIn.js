@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../../store/actions/authActions'
 
 class SignIn extends Component {
     state = {
@@ -15,10 +17,13 @@ class SignIn extends Component {
     // handle user submit form
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        // call added signIn to component props to send user input to dispatch an action
+        this.props.signIn(this.state);
     }
 
     render() {
+        const {authError} = this.props
+        console.log(this.props);
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="col s12 m6">
@@ -53,9 +58,30 @@ class SignIn extends Component {
                         </button>
                     </div>
                 </form>
+                {/* message to improve UX inform user when an error occurred */}
+                <div className="red-text center">
+                    { authError? <p> {authError} </p> : null}
+                </div>
             </div>
         )
     }
 }
 
-export default SignIn;
+// add authError to component props
+// to use it later to inform user when an error occurred
+const mapStateToProps = (state) => {
+    return {
+        authError: state.auth.authError
+    }
+}
+
+// add signIn method to component props
+// use it to dispatch action to authReducer
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn: (cerds) => { dispatch(signIn(cerds)) }
+    }
+}
+
+// connect component to redux
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
