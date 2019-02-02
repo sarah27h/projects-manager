@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signIn } from '../../store/actions/authActions'
+import { signIn } from '../../store/actions/authActions';
+import withAuth from '../../hoc/withAuth'
+import { compose } from 'redux';
 
 class SignIn extends Component {
     state = {
@@ -84,4 +86,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 // connect component to redux
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuth   // use HOC to add route guarding, check if user is logging then prevent him from  access SignIn, SignUp
+)(SignIn)

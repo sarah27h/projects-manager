@@ -13,6 +13,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 // compose used to combine HOC (connect, firebaseConnect)
 import { compose } from 'redux';
 
+import withNoAuth from '../../hoc/withNoAuth'
+
 class Dashboard extends Component {
     render() {
         /* use destructuring to grab projects off props*/
@@ -53,5 +55,6 @@ const mapStateToProps = (state) => {
 */
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([{ collection: 'projects'}]) // take array of objects to connect db collection to our component
+    firestoreConnect([{ collection: 'projects'}]), // take array of objects to connect db collection to our component
+    withNoAuth // use HOC to add route guarding, check if user is logout then prevent him from access Dashboard, CreateProject, ProjectDetails
 )(Dashboard)

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import withNoAuth from '../../hoc/withNoAuth';
 
 const ProjectDetails = (props) => {
     // using destructuring
@@ -52,5 +53,6 @@ const mapsStateToProps = (state, ownProps) => {
 // projects collection is now sync with our store state via firestore object
 export default compose(
     connect(mapsStateToProps),
-    firestoreConnect([ { collection : 'projects' } ])   // take array of objects to connect db collection to our component
+    firestoreConnect([ { collection : 'projects' } ]), // take array of objects to connect db collection to our component
+    withNoAuth   // use HOC to add route guarding, check if user is logout then prevent him from access Dashboard, CreateProject, ProjectDetails
 )(ProjectDetails);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createProject } from '../../store/actions/projectActions';
-
+import { compose } from 'redux';
+import withNoAuth from '../../hoc/withNoAuth'
 class CreateProject extends Component {
     
     state = {
@@ -79,4 +80,7 @@ const mapDispatchToProps = (dispatch) => {
 
 // pass mapDispatchToProps to connect
 // so it know which data to get from store
-export default connect(null, mapDispatchToProps)(CreateProject);
+export default compose(
+    connect(null, mapDispatchToProps),
+    withNoAuth // use HOC to add route guarding, check if user is logout then prevent him from access Dashboard, CreateProject, ProjectDetails
+)(CreateProject)

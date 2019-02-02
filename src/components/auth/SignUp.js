@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import withAuth from '../../hoc/withAuth'
 
 class SignUp extends Component {
 
@@ -89,4 +90,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+export default withAuth(SignUp); // use HOC to add route guarding, check if user is logging then prevent him from  access SignIn, SignUp
