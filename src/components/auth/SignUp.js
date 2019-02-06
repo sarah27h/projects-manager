@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import withAuth from '../../hoc/withAuth'
+import withAuth from '../../hoc/withAuth';
+import { signUp } from '../../store/actions/authActions';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 class SignUp extends Component {
 
@@ -21,9 +24,12 @@ class SignUp extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
+        // call added signUp to component props to send user sign up info and dispatch a signUp action
+        this.props.signUp(this.state);
     }
     
     render() {
+        const { authError } = this.props;
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="col s12 m6">
@@ -85,9 +91,32 @@ class SignUp extends Component {
                         </button>
                     </div>
                 </form>
+                {/* message to improve UX inform user when an signUp error occurred */}
+                <div className="red-text center">
+                            { authError ? <p>{authError}</p> : null }
+                </div>
             </div>
         )
     }
 }
 
-export default withAuth(SignUp); // use HOC to add route guarding, check if user is logging then prevent him from  access SignIn, SignUp
+// add authError to component props
+// to use it later to inform user when an error occurred
+const mapStateToProps = (state) => {
+    return {
+        authError: state.auth.authError
+    }
+}
+
+// add signUp method to component props
+// use it to dispatch signUp action to authReducer
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        signUp: (newUser) => dispatch(signUp(newUser))
+    }
+}
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuth // use HOC to add route guarding, check if user is logging then prevent him from  access SignIn, SignUp
+)(SignUp);

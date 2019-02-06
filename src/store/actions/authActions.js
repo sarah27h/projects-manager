@@ -27,3 +27,36 @@ export const signOut = () => {
             })
       }
 }
+
+export const signUp = (newUser) => {
+      return (dispatch, getState, { getFirebase, getFirestore }) => {
+            // use it to signUp newUser using auth service
+            const firebase = getFirebase();
+
+            // use it to communicate with our firestore db
+            // create a new document in users collection for each new user
+            const firestore = getFirestore();
+
+            // communicate with firebase and create this newUser
+            // this async task take sometime return a promise
+            firebase.auth().createUserWithEmailAndPassword(
+                  newUser.email,
+                  newUser.password
+            // this response contain info about user store in response.user
+            // use it to access user.uid to create a new doc for user in users collection
+            ).then((response)=> {
+                  // set some properties inside user doc
+                  // async task return promise
+                  return firestore.collection('users').doc(response.user.uid).set({
+                        firstName: newUser.firstName,
+                        lastName: newUser.lastName,
+                        initials: newUser.firstName[0] + newUser.lastName[0]
+                  })
+            }).then(()=> {
+                  dispatch({ type: 'SIGNUP_SUCCESS' });
+            }).catch((error)=> {
+                  dispatch({ type: 'SIGNUP_FAILED', error });
+            })
+
+      }
+}
