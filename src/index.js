@@ -31,7 +31,7 @@ const store = createStore(rootReducer,
     // pass config option {attachAuthIsReady: true} to allow us access -firebaseAuthIsReady- method on store 
     // store.firebaseAuthIsReady allow us to prevent rendering to DOM until
     // 1- firebase authentication is initialized
-    // 2- firebase can figure out we looged to app
+    // 2- firebase can figure out we logged to app
     // note: if your firebase reducers name is different than firebase
     // you need to add reactReduxFirebase
     // (fbConfig, {attachAuthIsReady:true, firebaseStateName:'yourUniqueReducerNameGoesHere'})
