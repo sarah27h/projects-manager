@@ -27,6 +27,7 @@ import fbConfig from './cofig/fbConfig';
 const store = createStore(rootReducer, 
     // use compose to combine store enhancers together
     // pass fbConfig file to firebase enhancer to connect project config file with our app
+
     // pass config option {attachAuthIsReady: true} to allow us access -firebaseAuthIsReady- method on store 
     // store.firebaseAuthIsReady allow us to prevent rendering to DOM until
     // 1- firebase authentication is initialized
@@ -34,9 +35,16 @@ const store = createStore(rootReducer,
     // note: if your firebase reducers name is different than firebase
     // you need to add reactReduxFirebase
     // (fbConfig, {attachAuthIsReady:true, firebaseStateName:'yourUniqueReducerNameGoesHere'})
+
+    // pass useFirestoreForProfile: true, userProfile: 'users'
+    // to enable firebase reducer to use firestore db 
+    // to sync docs in users collection -with- profile object inside state
+    // to use it to output initials in Navbar component
+    // http://react-redux-firebase.com/docs/firestore.html
+    // http://react-redux-firebase.com/docs/recipes/profile.html
     compose(
         applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
-        reactReduxFirebase(fbConfig, {attachAuthIsReady: true}),
+        reactReduxFirebase(fbConfig, {attachAuthIsReady: true, useFirestoreForProfile: true, userProfile: 'users'}),
         reduxFirestore(fbConfig)
     )
 );

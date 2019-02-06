@@ -10,7 +10,8 @@ const SignInLinks = (props) => {
             
             {/* fire action creator (signOut) when user click on logout in navbar  */}
             <li><a onClick={props.signOut}>Log out</a></li>
-            <li><NavLink to="/" className="btn btn-floating light-blue z-depth-0">SH</NavLink></li>
+            {/* to display user intials, this only works for the users you created using the SignUp form */}
+            <li><NavLink to="/" className="btn btn-floating light-blue z-depth-0">{props.profile.initials}</NavLink></li>
         </ul>
     )
 }
