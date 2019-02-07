@@ -10,11 +10,17 @@ export const createProject = (project) => {
         // then using collection to select our projects (collection) in firestore
         // then using add function to add new project (new document) to it
         const firestore = getFirestore();
+
+        // grab profile info from state object
+        const profile = getState().firebase.profile;
+        // grab uid from state object
+        const authorId = getState().firebase.auth.uid;
+
         firestore.collection('projects').add({
             ...project,
-            authorFirstName: 'Sarah',
-            authorLastName: 'Hassan',
-            authorId: 12345,
+            authorFirstName: profile.firstName,
+            authorLastName: profile.lastName,
+            authorId: authorId,
             createAt: new Date()
             
         })

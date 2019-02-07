@@ -22,7 +22,8 @@ class CreateProject extends Component {
         e.preventDefault();
         // pass user inputs to createProject
         this.props.createProject(this.state);
-        console.log(this.state);
+        // redirect user to Dashboard page after creating a new project
+        this.props.history.push('/');
     }
 
     render() {
