@@ -16,7 +16,7 @@ const ProjectDetails = (props) => {
                 </div>
                 <div className="card-action">
                     <p>posted by {project.authorFirstName} {project.authorLastName}</p>
-                    <p>1st October, 10am</p>
+                    <p>{project.createAt.toDate().toDateString()}</p>
                 </div>
             </div>
         )
