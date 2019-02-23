@@ -28,6 +28,7 @@ const createNotification = (notification => {
 * Cloud Functions for Firebase SDK exports a functions.firestore object 
 * that allows you to create handlers tied to specific events
 */
+// https://firebase.google.com/docs/functions/firestore-events#trigger_a_function_when_a_new_document_is_created
 // function calls projectCreated every time a new project is created
 exports.projectCreated = functions.firestore
     .document('projects/{projectId}')
