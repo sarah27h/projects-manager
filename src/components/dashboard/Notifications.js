@@ -1,13 +1,27 @@
 import React from 'react';
 
 const Notifications = (props) => {
+    const { notifications } = props
     return(
         <div className="section">
             <div className="card">
                 <div className="card-content">
                     <span className="card-title">Notifications</span>
                     <ul>
-                        <li>Notification</li>
+                        { notifications && notifications.map(notification  => {
+                                return (
+                                    <li key={notification.id}>
+                                        <span className="light-blue-text">{notification.user} </span>                                        
+                                        <span>{notification.content}</span>
+                                        <div className="grey-text note-date">
+                                            {notification.time.toDate().toDateString()} at {notification.time.toDate().toLocaleTimeString('en-US', {hour: '2-digit',minute:'2-digit'})}
+                                        </div>
+                                    </li>
+                                )
+                            })
+                            
+                        }
+                        
                     </ul>
                 </div>
             </div>
@@ -15,5 +29,5 @@ const Notifications = (props) => {
         </div>
     )
 }
-
+// toLocaleTimeString(navigator.language, {hour: '2-digit',minute:'2-digit'})
 export default Notifications;

@@ -18,7 +18,7 @@ import withNoAuth from '../../hoc/withNoAuth'
 class Dashboard extends Component {
     render() {
         /* use destructuring to grab projects off props*/
-        const { projects } = this.props;
+        const { projects, notifications } = this.props;
         console.log(this.props);
         return(
             <div className="container">
@@ -27,7 +27,7 @@ class Dashboard extends Component {
                         <ProjectList projects={projects} />
                     </div>
                     <div className="col s12 m5 offset-m1">
-                        <Notifications />
+                        <Notifications notifications={notifications} />
                     </div>
                 </div>
             </div>
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => {
     console.log(state);
     return {
         // grab data from firestore property
-        projects: state.firestore.ordered.projects
+        projects: state.firestore.ordered.projects,
+        notifications: state.firestore.ordered.notifications
     }
 }
 
@@ -55,6 +56,9 @@ const mapStateToProps = (state) => {
 */
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([{ collection: 'projects'}]), // take array of objects to connect db collection to our component
+    firestoreConnect([  // take array of objects to connect db collection to our component
+        { collection: 'projects' },
+        { collection: 'notifications', limit: 3}
+    ]), 
     withNoAuth // use HOC to add route guarding, check if user is logout then prevent him from access Dashboard, CreateProject, ProjectDetails
 )(Dashboard)
