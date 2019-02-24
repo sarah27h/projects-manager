@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProjectList = ({ projects }) => {
     console.log(projects);
     return(
-        <div className="">
+        <div className="section">
             { projects && projects.map( project => {
                 return (
                     <Link to = { '/project/' + project.id } key={project.id}>

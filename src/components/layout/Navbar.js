@@ -6,17 +6,25 @@ import { connect } from 'react-redux'; // connect to our redux state
 
 const Navbar = (props) => {
     const { auth, profile } = props;
+
     // conditionally show sign links components based on isEmpty property
     const links = auth.isEmpty ? <SignOutLinks /> :   <SignInLinks profile={profile} />; 
     return (
-        <nav>
+        <nav className="nav-extended">
             <div className="nav-wrapper blue-grey darken-4">
                 <div className="container">
-                    <Link to="/" className="brand-logo">Project Manager</Link>
-    
+                    
+                    <Link to="/" className="brand-logo left">Project Manager</Link>
+                    
+                </div>
+                
+            </div>
+            <div class="nav-content blue-grey darken-4">
+                <div className="section container">
                     {links}
                 </div>
             </div>
+            
         </nav>
     )
     
@@ -35,7 +43,7 @@ const mapStatetoProps = (state) => {
     console.log(state);
     return {
         auth: state.firebase.auth,
-        profile: state.firebase.profile 
+        profile: state.firebase.profile
     }
 }
 

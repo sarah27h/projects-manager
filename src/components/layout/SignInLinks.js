@@ -5,7 +5,7 @@ import { signOut } from '../../store/actions/authActions';
 
 const SignInLinks = (props) => {
     return (
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
+        <ul id="nav-mobile" className="tabs tabs-transparent">
             <li><NavLink to="/createproject">New Project</NavLink></li>
             
             {/* fire action creator (signOut) when user click on logout in navbar  */}
