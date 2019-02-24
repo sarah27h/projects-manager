@@ -29,5 +29,5 @@ const Notifications = (props) => {
         </div>
     )
 }
-// toLocaleTimeString(navigator.language, {hour: '2-digit',minute:'2-digit'})
+
 export default Notifications;

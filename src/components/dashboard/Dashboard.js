@@ -57,8 +57,8 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([  // take array of objects to connect db collection to our component
-        { collection: 'projects' },
-        { collection: 'notifications', limit: 3}
+        { collection: 'projects', orderBy: ['createAt', 'desc']},
+        { collection: 'notifications', limit: 3, orderBy: ['time', 'desc']}
     ]), 
     withNoAuth // use HOC to add route guarding, check if user is logout then prevent him from access Dashboard, CreateProject, ProjectDetails
 )(Dashboard)
